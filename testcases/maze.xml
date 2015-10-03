@@ -234,7 +234,7 @@
     <goalSequence>
       <seekStaticTarget>
         <targetLocation> <x>-90</x> <y>0</y> <z>-80</z> </targetLocation>
-        <desiredSpeed>10.3</desiredSpeed>
+        <desiredSpeed>1.3</desiredSpeed>
         <timeDuration>1000.0</timeDuration>
       </seekStaticTarget>
 
