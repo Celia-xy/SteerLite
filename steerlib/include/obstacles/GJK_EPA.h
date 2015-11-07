@@ -82,6 +82,9 @@ namespace SteerLib
              *      return (penetration_depth, penetration_vector)
              *  }
              *  
+
+
+
              *  intersect(Polygon A, Polygon B)
              *  {
              *      (Simplex, is_colliding) = GJK(A, B)
@@ -95,6 +98,11 @@ namespace SteerLib
              *          return (false, 0, NULL)    
              *      }    
              *  }
+
+
+
+
+
              *  ----------------------------------------------------
              *  Implementation:
              *  Write your own helper functions, as long as you do not change the function definition of intersect.
@@ -129,6 +137,24 @@ namespace SteerLib
             static bool intersect(float& return_penetration_depth, Util::Vector& return_penetration_vector, const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB);
 
         private:
+			//GJK
+			static bool GJK(const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB, std::vector<Util::Vector>& Simplex);
+			//EPA
+			static void EPA(const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB, std::vector<Util::Vector>& simplex, Util::Vector& perpendicular_vector, float& perpendicular_depth);
+			//containOrigin
+			static bool containOrigin(std::vector<Util::Vector>& simplex, Util::Vector& d);
+			//tripleProduct
+			static Util::Vector tripleProduct(const Util::Vector a, const Util::Vector b, const Util::Vector c);
+			//support
+			static Util::Vector support(const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB, Util::Vector& d);
+			//farthestPointInDirection
+			static Util::Vector farthestPointInDirection(const std::vector<Util::Vector>& _shapeA, Util::Vector& d);
+			//centerOfPolygon
+			static Util::Vector centerOfPolygon(const std::vector<Util::Vector>& _shapeA);
+
+			static int findClosestEdge(std::vector<Util::Vector>& simplex);
+			static Util::Vector edgeNormal(int edgeNumber, const std::vector<Util::Vector>& simplex);
+			static void insertSimplexPoint(std::vector<Util::Vector>& simplex, Util::Vector p, int edgeNumber);
 
     }; // class GJK_EPA
 
